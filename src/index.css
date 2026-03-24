@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer base {
+  .prose {
+    @apply text-slate-700 leading-relaxed;
+  }
+  .prose p {
+    @apply mb-4;
+  }
+  .prose ul {
+    @apply list-disc pl-5 mb-4;
+  }
+  .prose li {
+    @apply mb-1;
+  }
+  .prose strong {
+    @apply font-bold text-slate-900;
+  }
+}
+
+body {
+  @apply antialiased text-slate-900;
+}

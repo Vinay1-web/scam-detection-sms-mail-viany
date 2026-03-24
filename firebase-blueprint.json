@@ -1,0 +1,56 @@
+{
+  "entities": {
+    "ScanResult": {
+      "title": "Scan Result",
+      "description": "A record of a phishing scan performed by the user.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who performed the scan."
+        },
+        "type": {
+          "type": "string",
+          "enum": ["email", "sms", "url"],
+          "description": "The type of content scanned."
+        },
+        "content": {
+          "type": "string",
+          "description": "The content that was scanned (text or URL)."
+        },
+        "riskScore": {
+          "type": "integer",
+          "description": "The risk score from 0 to 100."
+        },
+        "riskLevel": {
+          "type": "string",
+          "enum": ["Low", "Medium", "High"],
+          "description": "The risk level based on the score."
+        },
+        "reasons": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "List of reasons why the content was flagged."
+        },
+        "explanation": {
+          "type": "string",
+          "description": "Detailed AI explanation of the risk."
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the scan was performed."
+        }
+      },
+      "required": ["userId", "type", "content", "riskScore", "riskLevel", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/scans/{scanId}": {
+      "schema": "ScanResult",
+      "description": "Collection of all scan results."
+    }
+  }
+}
